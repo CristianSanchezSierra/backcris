@@ -21,6 +21,19 @@ const createPoke = (body) =>{
 
 }
 
+const getUserByMail = (mail) =>{
+  return knex('user')
+    .where('mail', mail)
+    .select('mail')
+
+  } 
+
+  const deleteUser = (mail) =>{
+    return knex('user')
+    .where('mail', mail)
+    .del(body)
+  }
+
 // const updateUser = (id, body) =>{
 //   return knex('pokemon')
 //    .where('id', id)
@@ -28,16 +41,12 @@ const createPoke = (body) =>{
 
 // }
 
-// const deleteUser = (id) =>{
-//   return knex('pokemon')
-//   .where('id', id)
-//   .del(body)
-// }
 
 module.exports = {
     getAll,
     getPokeById,
+    getUserByMail,
     createPoke,
     // updateUser,
-    // deleteUser
+    deleteUser
 }

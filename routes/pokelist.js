@@ -1,5 +1,6 @@
 const express = require('express');
 const pokeQueries = require('../controllers/pokemons')
+const userQueries = require('../controllers/user')
 const router = express.Router();
 
 
@@ -17,8 +18,14 @@ router.get('/:id', async (req, resp) =>{
     resp.json(poke)
 });
 
-// para crear un usuario
-router.post('/', async (req, resp) =>{
+// para crear un pokemon
+router.post('/crear', async (req, resp) =>{
+    const body = req.body;
+    const newPoke = await pokeQueries.createPoke(body);
+    resp.json(newPoke)
+});
+
+router.post('/login', async (req, resp) =>{
     const body = req.body;
     const newPoke = await pokeQueries.createPoke(body);
     resp.json(newPoke)

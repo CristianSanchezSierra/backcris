@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const app = express();
 
 const pokeRouter = require('./routes/pokelist');
+const userRouter = require('./routes/user');
 
 
 
@@ -16,6 +17,7 @@ app.use(bodyParser.urlencoded({
 
 
 app.use('/', pokeRouter);
+app.use('/user', userRouter);
 
 
 app.listen(4000, ()=>{
