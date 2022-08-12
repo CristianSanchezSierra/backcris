@@ -3,9 +3,14 @@ const knex = require('knex')(configDB.development);
 
 const getAll = () =>{
     return knex
-      .column('nombre', 'id', 'tipo')
-      .select()
-      .from('pokemon')
+      .column('nombre', 'id')
+      .select('*')
+      .from('pokemoves')
+      .join(
+        'moves',
+        'pokemoves.moves_id',
+        'moves.id'
+      )
 }
 
 const getPokeById = (id) =>{
